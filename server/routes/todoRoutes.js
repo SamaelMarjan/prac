@@ -1,5 +1,9 @@
 const router = require("express").Router();
-const { getAllTodo, createTodo } = require("../controllers/controllers");
+const {
+  getAllTodo,
+  createTodo,
+  getSingleTodo,
+} = require("../controllers/controllers");
 
 // POST || router
 router.post("/create", createTodo);
@@ -8,7 +12,7 @@ router.post("/create", createTodo);
 router.get("/", getAllTodo);
 
 // GET :id || router
-// router.get();
+router.get("/:id", getSingleTodo);
 
 // PUT || router
 // router.put();

@@ -40,7 +40,20 @@ exports.getAllTodo = async (req, res) => {
 };
 
 // get single controller by id
-exports.getSingleTodo = async (req, res) => {};
+exports.getSingleTodo = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const single = await Todo.findById(id);
+    return res
+      .status(200)
+      .send({ success: true, message: "Here is your todo", single });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(404)
+      .send({ success: false, messagge: "check the error", error });
+  }
+};
 
 // update controller by id
 exports.updateTodo = async (req, res) => {};
