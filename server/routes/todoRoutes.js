@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { getAllTodo } = require("../controllers/controllers");
+const { getAllTodo, createTodo } = require("../controllers/controllers");
 
 // POST || router
-// router.post();
+router.post("/create", createTodo);
 
 // GET || router
 router.get("/", getAllTodo);

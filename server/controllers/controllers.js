@@ -1,7 +1,23 @@
 const Todo = require("../models/todoModel");
 
 // create controller
-exports.createTodo = async (req, res) => {};
+exports.createTodo = async (req, res) => {
+  const { todo } = req.body;
+  if (!todo) {
+    return res.status(500).send({ success: false, message: "create a todo" });
+  }
+  try {
+    const create = await Todo({ todo }).save();
+    return res
+      .status(200)
+      .send({ success: true, message: "Successfully created todo", create });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(404)
+      .send({ success: false, messagge: "check the error", error });
+  }
+};
 
 // get controller
 exports.getAllTodo = async (req, res) => {
