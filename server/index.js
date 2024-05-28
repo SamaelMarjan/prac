@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const connectDB = require("./config/dbConnection");
 require("dotenv").config();
 
+const todoRoute = require("./routes/todoRoutes");
+
 const app = express();
 
 // middlewares
@@ -12,9 +14,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // routes
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
+app.use("/api/v1/todo", todoRoute);
 
 // port
 const port = process.env.PORT || 5000;

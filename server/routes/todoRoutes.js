@@ -1,18 +1,19 @@
 const router = require("express").Router();
+const { getAllTodo } = require("../controllers/controllers");
 
 // POST || router
-router.post();
+// router.post();
 
 // GET || router
-router.get();
+router.get("/", getAllTodo);
 
 // GET :id || router
-router.get();
+// router.get();
 
 // PUT || router
-router.put();
+// router.put();
 
 // DELETE || router
-router.delete();
+// router.delete();
 
 module.exports = router;
