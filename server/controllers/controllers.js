@@ -22,7 +22,7 @@ exports.createTodo = async (req, res) => {
 // get controller
 exports.getAllTodo = async (req, res) => {
   try {
-    const todo = await Todo.find({});
+    const todo = await Todo.find({}).sort({ updatedAt: -1 });
     if (todo.length <= 0) {
       return res
         .status(200)
