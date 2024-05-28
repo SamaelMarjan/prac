@@ -56,7 +56,39 @@ exports.getSingleTodo = async (req, res) => {
 };
 
 // update controller by id
-exports.updateTodo = async (req, res) => {};
+exports.updateTodo = async (req, res) => {
+  const { todo } = req.body;
+  const { id } = req.params;
+  try {
+    if (!todo) {
+      return res
+        .status(500)
+        .send({ success: false, message: "to update write somethinng" });
+    }
+    const update = await Todo.findByIdAndUpdate(id, { todo }, { new: true });
+    return res
+      .status(200)
+      .send({ success: true, message: "Updated successfully", update });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(404)
+      .send({ success: false, messagge: "check the error", error });
+  }
+};
 
 // delete controller by id
-exports.deleteTodo = async (req, res) => {};
+exports.deleteTodo = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Todo.findByIdAndDelete(id);
+    return res
+      .status(200)
+      .send({ success: false, message: "Todo deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(404)
+      .send({ success: false, messagge: "check the error", error });
+  }
+};

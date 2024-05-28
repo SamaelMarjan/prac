@@ -3,6 +3,8 @@ const {
   getAllTodo,
   createTodo,
   getSingleTodo,
+  updateTodo,
+  deleteTodo,
 } = require("../controllers/controllers");
 
 // POST || router
@@ -15,9 +17,9 @@ router.get("/", getAllTodo);
 router.get("/:id", getSingleTodo);
 
 // PUT || router
-// router.put();
+router.put("/:id", updateTodo);
 
 // DELETE || router
-// router.delete();
+router.delete("/:id", deleteTodo);
 
 module.exports = router;
